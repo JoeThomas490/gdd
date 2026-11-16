@@ -1,5 +1,13 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig, fontProviders } from 'astro/config';
 
 // https://astro.build/config
-export default defineConfig({});
+export default defineConfig({
+    fonts: [{
+        provider: fontProviders.fontsource(),
+        name: "Crimson Text",
+        cssVariable: "--font-crimson",
+        styles: ["normal", "italic"],
+        weights: [600, 400]
+    }]
+});
