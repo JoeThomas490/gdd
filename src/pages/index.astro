@@ -1,17 +1,16 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
 
+const gamedevs = await getCollection('gamedevs')
 ---
 
 <Layout>
 	<main>
 		<ul>
-			<li>
-				1
-			</li>
-			<li>
-				2
-			</li>
+			{gamedevs.map(gamedev => (
+				<li>{gamedev.data.name}</li>
+			))}
 		</ul>
 
 	</main>
