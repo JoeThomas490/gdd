@@ -9,5 +9,12 @@ export default defineConfig({
         cssVariable: "--font-crimson",
         styles: ["normal", "italic"],
         weights: [600, 400]
+    },
+    {
+        provider: fontProviders.fontsource(),
+        name: "Inter",
+        cssVariable: "--font-inter",
+        styles: ["normal", "italic"],
+        weights: [600, 400, 200]
     }]
 });
