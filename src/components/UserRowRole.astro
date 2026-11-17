@@ -1,0 +1,38 @@
+---
+import { type Role, GetRoleIcon } from "../globals";
+
+interface Props {
+    role : Role;
+} 
+
+const { role } = Astro.props
+
+const { Icon, iconBg, rotation } = GetRoleIcon(role);
+---
+
+<div class="userrow-role-icon-container">
+    <div class="userrow-role-icon">
+        <Icon size={16}></Icon>
+    </div>
+</div>
+
+<style define:vars={{iconBg, rotation}}>
+
+.userrow-role-icon-container {
+    background-color: var(--iconBg);
+    width: 20px;
+    height: 20px;
+    margin-right: 4px;
+
+    display: flex;
+    align-content: center;
+    justify-content: center;
+
+    transform:rotate(var(--rotation));
+}
+
+.userrow-role-icon {
+    align-self: center;
+}
+
+</style>

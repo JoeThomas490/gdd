@@ -12,7 +12,7 @@ const gamedevs = await getCollection('gamedevs')
 	<main>
 		<ul>
 			{gamedevs.map(gamedev => (
-				<UserRow url={gamedev.data.websiteURL} name={gamedev.data.name} />
+				<UserRow url={gamedev.data.websiteURL} name={gamedev.data.name} roles={gamedev.data.roles} />
 			))}
 		</ul>
 	</main>

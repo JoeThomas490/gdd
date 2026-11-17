@@ -1,7 +1,15 @@
 ---
 import { SquareArrowOutUpRight } from "@lucide/astro"
+import UserRowRole from "./UserRowRole.astro";
+import type { Role } from "../globals";
 
-const {url, name } = Astro.props
+interface Props {
+    url : string,
+    name : string,
+    roles : Array<Role>
+}
+
+const {url, name, roles } = Astro.props
 
 const cleanseURL = (url: string) => {
 	return url.replace('https://', '');
@@ -13,6 +21,10 @@ const getFavIcon = (url: string) => {
 
 const cleanURL = cleanseURL(url);
 const favIcon = getFavIcon(url)
+
+roles.map(role => {
+    console.log(role);  
+});
 ---
 
 
@@ -23,6 +35,11 @@ const favIcon = getFavIcon(url)
             <p>
                 {name}
             </p>
+            <div class="userrow-roles">
+                {roles.map(role => (
+                    <UserRowRole role={role}/>
+                ))}
+            </div>
         </div>
         <div class="userrow-website">
             {cleanURL}
@@ -112,4 +129,12 @@ const favIcon = getFavIcon(url)
 		align-self:flex-start;
 		margin-left: 2px;
 	}
+
+    .userrow-roles {
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        margin-left: 10px;
+        align-self: center;
+    }
 </style>

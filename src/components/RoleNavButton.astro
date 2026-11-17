@@ -1,6 +1,5 @@
 ---
-import { PaintbrushIcon, WrenchIcon, PuzzleIcon, type AstroComponent} from '@lucide/astro'
-import { colourArtist, colourDesign, colourEngineer, type Role } from "../globals"
+import { GetRoleIcon, type Role } from "../globals"
 
 interface Props {
     role : Role;
@@ -9,18 +8,8 @@ interface Props {
 
 const { role, title } = Astro.props
 
-const GetRoleNavFromRole = (role : Role) : { Icon : AstroComponent, iconBg : string, dest:string, rotation : string } => {
-    switch(role) {
-        case "art":
-            return { Icon: PaintbrushIcon,  iconBg: colourArtist, dest: '#?role=art', rotation: '2deg' };
-        case "design":
-            return { Icon: PuzzleIcon,  iconBg: colourDesign, dest: '#?role=design',rotation: '-2deg' };
-        case 'engineer':
-            return { Icon: WrenchIcon,  iconBg: colourEngineer, dest: '#?role=engineer',rotation: '-1deg' };
-    }
-}
 
-const { Icon, iconBg, dest, rotation } = GetRoleNavFromRole(role);
+const { Icon, iconBg, dest, rotation } = GetRoleIcon(role);
 ---
 
 <a class="rolenav-button" href={dest}>
