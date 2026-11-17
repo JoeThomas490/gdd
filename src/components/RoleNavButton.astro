@@ -1,0 +1,94 @@
+---
+import { PaintbrushIcon, WrenchIcon, PuzzleIcon, type AstroComponent} from '@lucide/astro'
+
+type Role = "art" | "design" | "engineer";
+
+interface Props {
+    role : Role;
+    title : string
+} 
+
+const { role, title } = Astro.props
+
+const GetRoleIcon = (role : Role) : { Icon : AstroComponent, iconBg : string, dest:string, rotation : string } => {
+    switch(role) {
+        case "art":
+            return { Icon: PaintbrushIcon,  iconBg: "#DFF303", dest: '#?role=art', rotation: '2deg' };
+        case "design":
+            return { Icon: PuzzleIcon,  iconBg: "#F37303", dest: '#?role=design',rotation: '-2deg' };
+        case 'engineer':
+            return { Icon: WrenchIcon,  iconBg: "#03F3EF", dest: '#?role=engineer',rotation: '-1deg' };
+    }
+}
+
+const { Icon, iconBg, dest, rotation } = GetRoleIcon(role);
+---
+
+<a class="rolenav-button" href={dest}>
+    <div class="rolenav-icon-container">
+        <div class="rolenav-icon">
+            <Icon></Icon>
+        </div>
+    </div>
+    <h2>
+        {title}
+    </h2>
+</a>
+
+
+
+<style define:vars={{iconBg, rotation}}>
+
+.rolenav-button {
+    width: fit-content;
+    height: 42px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: end;
+
+    text-decoration: none;
+
+    margin-bottom: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    cursor: pointer;
+}
+
+.rolenav-icon-container {
+    background-color: var(--iconBg);
+    width:40px;
+    height:40px;
+
+    display: flex;
+    align-content: center;
+    justify-content: center;
+
+    transform:rotate(var(--rotation));
+}
+
+.rolenav-icon {
+    align-self: center;
+}
+
+h2 {
+    font-family: var(--font-crimson);
+    font-size: 28px;
+    font-weight: 400;
+    margin: 0;
+    margin-left: 10px;
+    align-self: end;
+}
+
+a:hover h2 {
+    text-decoration: underline;
+}
+
+</style>

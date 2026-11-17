@@ -1,0 +1,103 @@
+---
+import { XIcon } from "@lucide/astro"
+import RoleNavButton from "./RoleNavButton.astro";
+---
+
+<div id="rolenav">
+    <a class="rolenav-center-close" href="#"/>
+    <div class="rolenav-center">
+        <div class="rolenav-container">
+            <RoleNavButton title="Design" role="design"/>
+            <RoleNavButton title="Art" role="art"/>
+            <RoleNavButton title="Engineer" role="engineer"/>
+            
+            <a class="rolenav-close" href="#">
+                <XIcon size={16}/>
+            </a>
+        </div> 
+    </div>
+</div>
+
+<style>
+
+    h2 {
+        font-family: var(--font-crimson);
+        font-weight: 600;
+        font-size: 28px;
+        margin: 0;
+        margin-bottom: 10px;
+    }
+
+    p {
+        font-family: var(--font-crimson);
+        font-weight: 400;
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+	#rolenav {
+		display: none;
+        width: 100%;
+		height: 100%;
+        top: 0;
+        left: 0;
+        backdrop-filter: blur(2px);
+		position: absolute;
+	}
+
+	#rolenav:target {
+        display: block;		
+	}
+
+    .rolenav-center {
+	    position: relative;
+		display: flex;
+		margin-left: auto;
+		margin-right: auto;
+		max-width: 607px;
+        height: 100%;
+
+        justify-content: center;
+        align-content: center;
+
+        pointer-events: none;
+    }
+
+    .rolenav-container {
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        justify-content: start;
+
+        width: 351px;
+        height: fit-content;
+        margin-top: 40%;
+
+        padding: 24;
+
+        background-color: white;
+        border-radius: 20;
+
+        box-shadow: 2px 2px 4px rgb(0 0 0 / 25%);
+
+        pointer-events: all;
+    }
+
+    .rolenav-close {
+        display: flex;
+        position: absolute;
+        top: 8px;
+        right: 8px;
+    }
+
+    .rolenav-center-close {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: hidden;
+        cursor: default;
+    }
+
+</style>
