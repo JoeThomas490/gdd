@@ -1,7 +1,6 @@
 ---
 import { PaintbrushIcon, WrenchIcon, PuzzleIcon, type AstroComponent} from '@lucide/astro'
-
-type Role = "art" | "design" | "engineer";
+import { colourArtist, colourDesign, colourEngineer, type Role } from "../globals"
 
 interface Props {
     role : Role;
@@ -13,11 +12,11 @@ const { role, title } = Astro.props
 const GetRoleIcon = (role : Role) : { Icon : AstroComponent, iconBg : string, dest:string, rotation : string } => {
     switch(role) {
         case "art":
-            return { Icon: PaintbrushIcon,  iconBg: "#DFF303", dest: '#?role=art', rotation: '2deg' };
+            return { Icon: PaintbrushIcon,  iconBg: colourArtist, dest: '#?role=art', rotation: '2deg' };
         case "design":
-            return { Icon: PuzzleIcon,  iconBg: "#F37303", dest: '#?role=design',rotation: '-2deg' };
+            return { Icon: PuzzleIcon,  iconBg: colourDesign, dest: '#?role=design',rotation: '-2deg' };
         case 'engineer':
-            return { Icon: WrenchIcon,  iconBg: "#03F3EF", dest: '#?role=engineer',rotation: '-1deg' };
+            return { Icon: WrenchIcon,  iconBg: colourEngineer, dest: '#?role=engineer',rotation: '-1deg' };
     }
 }
 
