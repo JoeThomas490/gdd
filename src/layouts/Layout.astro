@@ -2,6 +2,7 @@
 import { Font } from 'astro:assets';
 import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
+import About from '../components/About.astro'
 ---
 
 <!doctype html>
@@ -25,10 +26,15 @@ import Footer from '../components/Footer.astro'
 				<slot />
 			</div>
 		</div>
+		<About/>
 	</body>
 </html>
 
 <style>
+	a {
+		text-decoration: none !important;
+	}
+	
 	html,
 	body {
 		margin: 0;
