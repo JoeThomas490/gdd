@@ -9,7 +9,7 @@ interface Props {
 
 const { role, title } = Astro.props
 
-const GetRoleIcon = (role : Role) : { Icon : AstroComponent, iconBg : string, dest:string, rotation : string } => {
+const GetRoleNavFromRole = (role : Role) : { Icon : AstroComponent, iconBg : string, dest:string, rotation : string } => {
     switch(role) {
         case "art":
             return { Icon: PaintbrushIcon,  iconBg: colourArtist, dest: '#?role=art', rotation: '2deg' };
@@ -20,7 +20,7 @@ const GetRoleIcon = (role : Role) : { Icon : AstroComponent, iconBg : string, de
     }
 }
 
-const { Icon, iconBg, dest, rotation } = GetRoleIcon(role);
+const { Icon, iconBg, dest, rotation } = GetRoleNavFromRole(role);
 ---
 
 <a class="rolenav-button" href={dest}>

@@ -1,4 +1,5 @@
-export type Role = "art" | "design" | "engineer";
+export const roles = ["art", "design", "engineer"] as const;
+export type Role = typeof roles[number];
 
 export const colourDesign = '#F37303'
 export const colourArtist = '#DFF303' 
