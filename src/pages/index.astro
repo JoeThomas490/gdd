@@ -1,7 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
-import { SquareArrowOutUpRight } from '@lucide/astro'
 import UserRow from '../components/UserRow.astro';
 
 const gamedevs = await getCollection('gamedevs')
@@ -12,7 +11,7 @@ const gamedevs = await getCollection('gamedevs')
 	<main>
 		<ul>
 			{gamedevs.map(gamedev => (
-				<UserRow url={gamedev.data.websiteURL} name={gamedev.data.name} roles={gamedev.data.roles} />
+				<UserRow url={gamedev.data.websiteURL} name={gamedev.data.name} roles={gamedev.data.roles}/>
 			))}
 		</ul>
 	</main>
@@ -29,3 +28,24 @@ const gamedevs = await getCollection('gamedevs')
 
 
 </style>
+
+<script>
+	console.log(window.location);
+	const searchString = new URLSearchParams(window.location.search);
+	const searchRole = searchString.get('role');
+	const rows = document.getElementsByClassName('userrow');
+
+	for(let row of rows) {
+		const rowRoles = JSON.parse(row.dataset.roles) as Array<string>;
+		console.log(rowRoles);
+		console.log(rowRoles.includes(searchRole));
+		if(searchRole) {
+			if(rowRoles.includes(searchRole)) {
+				row.parentElement.style.display = 'flex';
+			}
+		} else {
+			row.parentElement.style.display = 'flex';
+		}
+	}
+</script>
+

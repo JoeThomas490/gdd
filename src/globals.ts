@@ -11,10 +11,10 @@ export const colourEngineer = '#03F3EF'
 export const GetRoleIcon = (role : Role) : { Icon : AstroComponent, iconBg : string, dest:string, rotation : string } => {
     switch(role) {
         case "art":
-            return { Icon: PaintbrushIcon,  iconBg: colourArtist, dest: '#?role=art', rotation: '2deg' };
+            return { Icon: PaintbrushIcon,  iconBg: colourArtist, dest: '?role=art', rotation: '2deg' };
         case "design":
-            return { Icon: PuzzleIcon,  iconBg: colourDesign, dest: '#?role=design',rotation: '-2deg' };
+            return { Icon: PuzzleIcon,  iconBg: colourDesign, dest: '?role=design',rotation: '-2deg' };
         case 'engineer':
-            return { Icon: WrenchIcon,  iconBg: colourEngineer, dest: '#?role=engineer',rotation: '-1deg' };
+            return { Icon: WrenchIcon,  iconBg: colourEngineer, dest: '?role=engineer',rotation: '-1deg' };
     }
 }
