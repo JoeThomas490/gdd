@@ -36,15 +36,15 @@ const gamedevs = await getCollection('gamedevs')
 	const rows = document.getElementsByClassName('userrow');
 
 	for(let row of rows) {
-		const rowRoles = JSON.parse(row.dataset.roles) as Array<string>;
-		console.log(rowRoles);
-		console.log(rowRoles.includes(searchRole));
-		if(searchRole) {
-			if(rowRoles.includes(searchRole)) {
+		if(row && row instanceof HTMLElement && row.dataset.roles) {
+			const rowRoles = JSON.parse(row.dataset.roles) as Array<string>;
+			if(searchRole) {
+				if(rowRoles.includes(searchRole) && row.parentElement) {
+					row.parentElement.style.display = 'flex';
+				}
+			} else if(row.parentElement){
 				row.parentElement.style.display = 'flex';
 			}
-		} else {
-			row.parentElement.style.display = 'flex';
 		}
 	}
 </script>
