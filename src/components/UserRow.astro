@@ -28,10 +28,12 @@ const favIcon = getFavIcon(url)
 <li>
     <a href={url} target="_blank" class="userrow" data-roles={JSON.stringify(roles)}>
         <div class="userrow-user">
-            <img height="28" width="28" src={favIcon} />
-            <p>
-                {name}
-            </p>
+			<div class="userrow-name">
+				<img height="28" width="28" src={favIcon} />
+				<p>
+					{name}
+				</p>
+			</div>
             <div class="userrow-roles">
                 {roles.map(role => (
                     <UserRowRole role={role}/>
@@ -102,6 +104,14 @@ const favIcon = getFavIcon(url)
 	}
 
 	.userrow-user {
+		display: flex;
+		flex-direction: row;
+		justify-content: start;
+		align-content: center;
+		align-self: center;
+	}
+
+	.userrow-name {
 		display: flex;
 		flex-direction: row;
 		justify-content: start;

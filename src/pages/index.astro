@@ -3,14 +3,24 @@ import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 import UserRow from '../components/UserRow.astro';
 
-const gamedevs = await getCollection('gamedevs')
+const gamedevs = await getCollection('gamedevs');
+const sortedData = gamedevs.sort((a,b) => {
+	if (a.data.name < b.data.name) {
+    	return -1;
+  	}
+  	if (a.data.name > b.data.name) {
+    	return 1;
+  	}
+  	return 0;
+});
+
 
 ---
 
 <Layout>
 	<main>
 		<ul>
-			{gamedevs.map(gamedev => (
+			{sortedData.map(gamedev => (
 				<UserRow url={gamedev.data.websiteURL} name={gamedev.data.name} roles={gamedev.data.roles}/>
 			))}
 		</ul>
